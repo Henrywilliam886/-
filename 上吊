@@ -1,0 +1,96 @@
+import random
+
+def choose_word():
+    words = ["apple", "banana", "orange", "elephant", "guitar", "computer"]
+    return random.choice(words)
+
+def display_word(word, guessed_letters):
+    display = ""
+    for letter in word:
+        if letter in guessed_letters:
+            display += letter
+        else:
+            display += "_"
+    return display
+
+def draw_hangman(incorrect_guesses):
+    hangman_graphics = [
+        """
+         -----
+         |   |
+             |
+             |
+             |
+             |
+        --------
+        """,
+        """
+         -----
+         |   |
+         O   |
+             |
+             |
+             |
+        --------
+        """,
+        """
+         -----
+         |   |
+         O   |
+         |   |
+             |
+             |
+        --------
+        """,
+        """
+         -----
+         |   |
+         O   |
+        /|   |
+             |
+             |
+        --------
+        """,
+        """
+         -----
+         |   |
+         O   |
+        /|\\  |
+             |
+             |
+        --------
+        """,
+        """
+         -----
+         |   |
+         O   |
+        /|\\  |
+        /    |
+             |
+        --------
+        """,
+        """
+         -----
+         |   |
+         O   |
+        /|\\  |
+        / \\  |
+             |
+        --------
+        """
+    ]
+    return hangman_graphics[incorrect_guesses]
+
+def play_game():
+    word_to_guess = choose_word()
+    guessed_letters = []
+    incorrect_guesses = 0
+
+    print("Welcome to Text Hangman!")
+    print(display_word(word_to_guess, guessed_letters))
+
+    while incorrect_guesses < 6:
+        guess = input("Guess a letter: ").lower()
+
+        if guess.isalpha() and len(guess) == 1:
+            if guess in⬤
